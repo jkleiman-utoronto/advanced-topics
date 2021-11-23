@@ -62,7 +62,7 @@ let gryfCol = 'yellow',
     slythCol = 'green',
     hogCol = 'grey',
     meadeCol = 'rgb(40,40,120)',
-    towerCol = 'blue';
+    riverCol = 'rgb(0,0,128)';
     japanCol = 'red'
     romeCol = 'purple'
     wallCol = 'black'
@@ -92,7 +92,7 @@ let gryfCol = 'yellow',
 // These are placeholder arrays; we use them to generate other JS variables
 // that will be more useful to us later on
 // but writing them this way keeps the code as D.R.Y. as possible
-let slythMarkerInfo =
+let barMarkerInfo =
     [
         {position: [55.48997247517858,-1.5944015979766843],
          title: "Room of Requirement",
@@ -113,17 +113,27 @@ let slythMarkerInfo =
          icon: mysteryIcon,
          description: `<p>what drives him? How has he survived so long with so much decption, such intense longing, guilt, and hatred?`}
     ],
-    gryfMarkerInfo =
-    [{position: [55.49058639152367,-1.5951092937469482],
-      title: "Dumbledore Lies Dying",
-      description: "<p>Afflicted by a curse for over a year, and gravely weakened by a powerful poison, Dumbledore lies on the ground, barely mobile.</p>"
-     }];
+    romeMarkerInfo =
+    [{position: [41.9028,12.49046],
+      title: "Rome",
+      description: "<p>The Eternal City, Rome was the capital of the Roman Empire until strategic considerations moved it to Ravenna and later Constantinople. The city was founded in 753 B.C and at the height of the Roman Empire all power emanated from it.</p>"
+      
+     },
+     {position: [50.9375,6.9603],
+      title: "Colonia Claudia Ara Agrippinensium",
+      description: "<p>The Eternal City, Rome was the capital of the Roman Empire until strategic considerations moved it to Ravenna and later Constantinople. The city was founded in 753 B.C and at the height of the Roman Empire all power emanated from it.</p>"
+      
+     }
+    
+    
+    ];
 
 
-let gryfMarkers = processMarkerLayer(gryfMarkerInfo,
-                                     {description: 'Gryffindor: People and Places', defaultIcon: gryfIcon}),
-    slythMarkers = processMarkerLayer(slythMarkerInfo,
-                                      {description: 'Slytherin: Peple and Places', defaultIcon: slythIcon});
+
+let gryfMarkers = processMarkerLayer(romeMarkerInfo,
+                                     {description: 'Roman Places', defaultIcon: gryfIcon}),
+    barMarkers = processMarkerLayer(barMarkerInfo,
+                                      {description: 'Barbarian Places and Events', defaultIcon: slythIcon});
 
 
 
@@ -140,26 +150,9 @@ let gryfMarkers = processMarkerLayer(gryfMarkerInfo,
 // to set the line and fill color, you will need to set the `myColor` property as below. 
 const townsData={
     "type": "FeatureCollection",
-    "description": "Magical Municipalities",
+    "description": "Roman Areas of Control",
   "features": [
-    {
-      "type": "Feature",
-        "properties": {myColor: hogCol, title: "Hogwarts School", description: "Terrifying events are commonplace here." },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-            [[-1.5929424762725828,55.49200869560172],[-1.5931355953216553,55.491753414035976],[-1.5934574604034424,55.49184458621365],[-1.5935111045837402,55.49174125772966],[-1.5935754776000977,55.491552834502244],[-1.5937042236328125,55.4914069578362],[-1.5939724445343018,55.491212454774455],[-1.5942513942718506,55.4911152028834],[-1.5946805477142334,55.491084811618215],[-1.595292091369629,55.4910604985892],[-1.595635414123535,55.49106657684784],[-1.5957105159759521,55.491121281133644],[-1.5959036350250244,55.49102402901751],[-1.5959250926971436,55.49093285494058],[-1.5960323810577393,55.49078697597856],[-1.5962040424346924,55.49052560815388],[-1.5962576866149902,55.49022168989803],[-1.5962469577789307,55.49010620034601],[-1.5961718559265137,55.48994208303175],[-1.5960967540740967,55.489765808117795],[-1.5959680080413818,55.48957737544101],[-1.5957856178283691,55.48941933443642],[-1.5954852104187012,55.489291685469844],[-1.5952062606811523,55.489255214260574],[-1.5951526165008545,55.48916403608966],[-1.5947985649108887,55.48930384253212],[-1.5947234630584717,55.489364627787104],[-1.5943479537963867,55.48943756996929],[-1.5939295291900633,55.48960776786919],[-1.5937042236328125,55.489711101949666],[-1.5934574604034424,55.48978404349032],[-1.5933179855346677,55.48978404349032],[-1.593436002731323,55.48990561242462],[-1.5932321548461914,55.49002110256471],[-1.593017578125,55.490094043531386],[-1.5929424762725828,55.49039796277202],[-1.5928030014038086,55.49066540976418],[-1.5927600860595703,55.49105442032959],[-1.5926849842071533,55.49143127065138],[-1.5926635265350342,55.491704788788255],[-1.5925991535186768,55.49185066435133],[-1.5929424762725828,55.49200869560172]]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-        "properties": {myColor: meadeCol, title: "Town of Hogsmeade", description: "Home of Butterbeer"},
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[-1.6042613983154297,55.490701879667895],[-1.6042077541351318,55.49065933144361],[-1.6042184829711914,55.49068364472025],[-1.604926586151123,55.49031894399501],[-1.607351303100586,55.49065933144361],[-1.6081881523132324,55.489923847732406],[-1.6085636615753174,55.48901815057725],[-1.6068792343139648,55.48843460312515],[-1.6042506694793701,55.487723392980776],[-1.6029417514801023,55.48743161074576],[-1.600785255432129,55.48822792799636],[-1.5991652011871336,55.48898167911473],[-1.599959135055542,55.490033259401876],[-1.5986931324005127,55.491479896236754],[-1.5987253189086914,55.49171694510582],[-1.5996050834655762,55.49194791442662],[-1.6010427474975586,55.49192360193031],[-1.6019654273986814,55.49204516426178],[-1.6025233268737793,55.491795961078495],[-1.6033065319061277,55.491340097517046],[-1.6042613983154297,55.490701879667895]]        ]
-      }
-    },
+   
     {
       "type": "Feature",
       "properties": {myColor: romeCol, title: "Roman Britain", description: "Civilized land in the south and a wild frigid north, seperated by a massive wall. Sound familiar?"},
@@ -2477,18 +2470,17 @@ let slytherin = L.rectangle([[ 55.48954090449621, -1.5956997871398926], [55.4902
 });
 
 let headmasterTower = L.circle([55.4907, -1.5944], {
-    color: towerCol,
+    color: riverCol,
     opacity: 0.8,
     weight: 2,
-    fillColor: towerCol,
+    fillColor: riverCol,
     fillOpacity: 0.35,
     radius: 40,
     title: 'Headmaster\'s Tower',
     windowContent: `<h3>Headmaster's Tower</h3><p>Scene of the the Fatal Act.</p>`
 });
 
-let houses = processManualLayers([gryffindor, slytherin, headmasterTower],
-                                 {description: 'Important Hogwarts Buildings'});
+
 
 
 
@@ -2579,7 +2571,7 @@ let hadriansWall = L.polyline([
   ]
 ], {
                                     color: wallCol,
-                                    weight: 6,
+                                    weight: 5,
                                     title: 'Hadrian\'s Wall',
                                     windowContent: `<h3>Hadrian's Wall</h3><p>Roughly 70 miles long, the wall shielded Roman Britannia from the Picts in Caledonia. Much of the wall still stands today and it is a testament to Roman engineering. It was constructed in 122 A.D</p><img width = "200" height = "100" style ="display: block; margin-left: auto; margin-right: auto;" src="https://www.history.com/.image/t_share/MTU3ODc4NjA0MDU5MzIyMDc5/istock_41785482_large-2.jpg">`})
 
@@ -2704,8 +2696,8 @@ let rhineRiver = L.polyline([
     4.19677734375
   ]
 ],{
-                                    color: wallCol,
-                                    weight: 6,
+                                    color: riverCol,
+                                    weight: 5,
                                     title: 'The River Rhine',
                                     windowContent: `<h3>The Rhine River</h3><p>The Rhine River's natural fortifications provided the bulk of the <i>Limes Germanicus</i> (Germanic frontier). The river's wide width and fast current made it a great defensive barrier. Gibbon posited that the barbarian crossing of the Rhine in 406 A.D might have been due to it freezing over.  </p> <img src = "https://d3ertfc829vzop.cloudfront.net/-/media/Tauck/Editorial/Images/SEO-Pages/River-Cruise-Guides/Best-Of/BestOf_Rhine_hero.jpg?rev=805076b8cb204d6788c24496ad3611d9" width = "200" height = "100" style = "display: block; margin-left: auto; margin-right: auto;">`})
 
@@ -2892,11 +2884,11 @@ let danubeRiver = L.polyline([
   ]
 ]
 , {
-                                  color: gryfCol,
-                                  weight: 4,
-                                  title: 'Return from Horcrux quest',
-                                  windowContent: `<h3>Return Disapparation from Failed Horcrux quest</h3><p>Exhaisted and grieviously injured, Dumbledore returns to find the trap he had so long expected has been sprung.</p>`})
-let paths = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {description: 'Paths'})
+                                  color: riverCol,
+                                  weight: 5,
+                                  title: 'Danube River',
+                                  windowContent: `<h3>The Danube River </h3 <p> The Danube River made up most of the eponymous <i>Limes Danibus</i> (Danubian frontier). It is even longer than the Rhine and Romans manned the river to defend from Barbarian groups in Dacia and Pannonia</p>`})
+let frontiers = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {description: 'Frontiers'})
 
 
 ////////////////////////////////////////////////
@@ -2904,7 +2896,7 @@ let paths = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {descri
 // these layers will be added to the map
 // you should change these variable names
 // to align with the variables you've defiend above
-let allLayers = [gryfMarkers, slythMarkers, towns, houses, paths];
+let allLayers = [gryfMarkers, barMarkers, towns,  frontiers];
 
 
 ///////////////////////////////////////
