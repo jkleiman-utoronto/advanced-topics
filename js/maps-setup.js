@@ -38,6 +38,8 @@ let projectMap, // this will hold the map once it's initialized
 const greenURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
       yellowURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
       greyURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png';
+      redURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png';
+      blackURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png';
 
 // create new icon classes
 // I've added this just in case you want very fine control over your marker placement
@@ -51,8 +53,8 @@ const myIconClass = L.Icon.extend({
     }});
 // create the new icon types -- cf. https://leafletjs.com/examples/custom-icons/ and
 // also https://leafletjs.com/reference-1.5.0.html#icon
-const gryfIcon = new myIconClass({iconUrl: yellowURL}),
-      slythIcon = new myIconClass({iconUrl: greenURL}),
+const gryfIcon = new myIconClass({iconUrl: redURL}),
+      barIcon = new myIconClass({iconUrl: blackURL}),
       mysteryIcon = new myIconClass({iconUrl: greyURL});
 
 
@@ -94,34 +96,29 @@ let gryfCol = 'yellow',
 // but writing them this way keeps the code as D.R.Y. as possible
 let barMarkerInfo =
     [
-        {position: [55.48997247517858,-1.5944015979766843],
-         title: "Room of Requirement",
-         description: '<p>one half of the Cabinet is located here.</p>'
+        {position: [51.89716,8.816383],
+         title: "Tuetoburg Forest",
+         description: '<p>A brutal battle took place here in 9 AD. Three Roman Legions were ambushed by warriors from a number of different Germanic warriors. The victory of Germanic tribes was made possible by the efforts of Arminius, a Romanized Germanic man, who betrayed General Varus after the legions crossed the Rhine.</p>'
         },
-        {position: [55.49058639152367,-1.5940092937469482],
-         title: "Fenrir Greyback",
-         description: `<p>An evil and spiteful werewolf, he thirsts for blood and impatiently awaits Dumbledore's demise.</p>`
-        },
-        {position: [55.61679475360749,-1.6392910480499268],
-         title: "Isle of the Locket",
-         description: `<p>A forlorn and terrifying sea cave, guarded by an army of the undead and many other magical protections</p>`},
-        {position: [ 55.49086601004396, -1.5939261297996548 ],
-         title: "Draco Malfoy",
-         description: "<p>Weak-willed, dissatisfied, and a natural bully, Draco Malfoy has nonetheless plotted the murder of his own headmaster.</p>"},
-        {position: [ 55.49046495468512, -1.5939583064545149 ],
-         title: "Severus Snape",
-         icon: mysteryIcon,
-         description: `<p>what drives him? How has he survived so long with so much decption, such intense longing, guilt, and hatred?`}
+        {position: [47.5361,4.4904],
+         title: "Alesia",
+         description: `<p>In 52 BC, Julius Caesar defeated a large army of Gauls here, with an incredibly tactically intriguing double envelopment. Roman legions fought a united front of Gallic tribes led by Vercingetorix. The Battle of Alesia and the Gallic Wars in general show how the land that Rome conquered had to first be 'pacified', even if it lay behind Rome's later frontiers. Many modern scholars would equate this process of 'pacification' with cultural genocide and ethnic cleansing. One notable proponent of this theory is the historian/podcaster Dan Carlin, who made a podcast about the Gallic Wars titled 'the Celtic Genocide'.</p>`
+        }
     ],
     romeMarkerInfo =
     [{position: [41.9028,12.49046],
       title: "Rome",
-      description: "<p>The Eternal City, Rome was the capital of the Roman Empire until strategic considerations moved it to Ravenna and later Constantinople. The city was founded in 753 B.C and at the height of the Roman Empire all power emanated from it.</p>"
+      description: "<p>The Eternal City, Rome was the capital of the Roman Empire until strategic considerations moved it to Ravenna and later Constantinople. The city was founded in 753 BC and at the height of the Roman Empire all power emanated from it. The city housed both the Roman Emperor and Senate. Modern estimates for the city's population at it's height stand at over 1 million (in the 2nd Century AD.) </p>"
       
      },
      {position: [50.9375,6.9603],
       title: "Colonia Claudia Ara Agrippinensium",
-      description: "<p>The Eternal City, Rome was the capital of the Roman Empire until strategic considerations moved it to Ravenna and later Constantinople. The city was founded in 753 B.C and at the height of the Roman Empire all power emanated from it.</p>"
+      description: "<p>Colonia (modern day Cologne) was a German city situated on the River Rhine. The city was the capital of Roman province of <i>Germania Inferior</i> and was an important military base of operations for Rome's defensive positions along the Rhine. The existance of a city in Germania that was so similiar in appearance to those in Italy is a testament to Rome's widespread influence during the Imperial period.</p>"
+      
+     },
+     {position: [44.623496, 22.667170],
+      title: "Trajan's Bridge over the Danube",
+      description: "<p>Trajan's Bridge spanned the 'Iron Gate' section of the Danube River, and was over 1000 metres long. The bridge was originally built to help supply Roman legions invading an independent Dacian Kingdom, but later served as an important crossing point into the Roman province of Dacia. Diminishing Roman Power during the Crisis of the Third Century saw Romans retreat from Dacia back across the Danube.</p>"
       
      }
     
@@ -130,10 +127,10 @@ let barMarkerInfo =
 
 
 
-let gryfMarkers = processMarkerLayer(romeMarkerInfo,
-                                     {description: 'Roman Places', defaultIcon: gryfIcon}),
+let romeMarkers = processMarkerLayer(romeMarkerInfo,
+                                     {description: 'Roman Places 🏛️', defaultIcon: gryfIcon}),
     barMarkers = processMarkerLayer(barMarkerInfo,
-                                      {description: 'Barbarian Places and Events', defaultIcon: slythIcon});
+                                      {description: 'Encounters with Barbarians 🛡️', defaultIcon: barIcon});
 
 
 
@@ -150,7 +147,7 @@ let gryfMarkers = processMarkerLayer(romeMarkerInfo,
 // to set the line and fill color, you will need to set the `myColor` property as below. 
 const townsData={
     "type": "FeatureCollection",
-    "description": "Roman Areas of Control",
+    "description": "Roman Areas of Control 🗺",
   "features": [
    
     {
@@ -2573,7 +2570,7 @@ let hadriansWall = L.polyline([
                                     color: wallCol,
                                     weight: 5,
                                     title: 'Hadrian\'s Wall',
-                                    windowContent: `<h3>Hadrian's Wall</h3><p>Roughly 70 miles long, the wall shielded Roman Britannia from the Picts in Caledonia. Much of the wall still stands today and it is a testament to Roman engineering. It was constructed in 122 A.D</p><img width = "200" height = "100" style ="display: block; margin-left: auto; margin-right: auto;" src="https://www.history.com/.image/t_share/MTU3ODc4NjA0MDU5MzIyMDc5/istock_41785482_large-2.jpg">`})
+                                    windowContent: `<h3>Hadrian's Wall</h3><p>Roughly 70 miles long, the wall shielded Roman Britannia from the Picts in Caledonia. Much of the wall still stands today and it is a testament to Roman engineering. It was constructed in 122 AD</p><img width = "200" height = "100" style ="display: block; margin-left: auto; margin-right: auto;" src="https://www.history.com/.image/t_share/MTU3ODc4NjA0MDU5MzIyMDc5/istock_41785482_large-2.jpg">`})
 
 
 let rhineRiver = L.polyline([
@@ -2699,7 +2696,7 @@ let rhineRiver = L.polyline([
                                     color: riverCol,
                                     weight: 5,
                                     title: 'The River Rhine',
-                                    windowContent: `<h3>The Rhine River</h3><p>The Rhine River's natural fortifications provided the bulk of the <i>Limes Germanicus</i> (Germanic frontier). The river's wide width and fast current made it a great defensive barrier. Gibbon posited that the barbarian crossing of the Rhine in 406 A.D might have been due to it freezing over.  </p> <img src = "https://d3ertfc829vzop.cloudfront.net/-/media/Tauck/Editorial/Images/SEO-Pages/River-Cruise-Guides/Best-Of/BestOf_Rhine_hero.jpg?rev=805076b8cb204d6788c24496ad3611d9" width = "200" height = "100" style = "display: block; margin-left: auto; margin-right: auto;">`})
+                                    windowContent: `<h3>The Rhine River</h3><p>The Rhine River's natural fortifications provided the bulk of the <i>Limes Germanicus</i> (Germanic frontier). The river's wide width and fast current made it a great defensive barrier. Gibbon posited that the barbarian crossing of the Rhine in 406 AD might have been due to it freezing over.  </p> <img src = "https://d3ertfc829vzop.cloudfront.net/-/media/Tauck/Editorial/Images/SEO-Pages/River-Cruise-Guides/Best-Of/BestOf_Rhine_hero.jpg?rev=805076b8cb204d6788c24496ad3611d9" width = "200" height = "100" style = "display: block; margin-left: auto; margin-right: auto;">`})
 
 let danubeRiver = L.polyline([
   [
@@ -2887,8 +2884,8 @@ let danubeRiver = L.polyline([
                                   color: riverCol,
                                   weight: 5,
                                   title: 'Danube River',
-                                  windowContent: `<h3>The Danube River </h3 <p> The Danube River made up most of the eponymous <i>Limes Danibus</i> (Danubian frontier). It is even longer than the Rhine and Romans manned the river to defend from Barbarian groups in Dacia and Pannonia</p>`})
-let frontiers = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {description: 'Frontiers'})
+                                  windowContent: `<h3>The Danube River </h3 <p> The Danube River made up most of the eponymous <i>Limes Danibus</i> (Danubian frontier). It is even longer than the Rhine and Romans manned the river to defend from Barbarian groups in Dacia and Pannonia</p><img src = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Danube_near_Iron_Gate_2006.JPG" width = "200" height = "100" style = "display: block; margin-left: auto; margin-right: auto;">` })
+let frontiers = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {description: 'Frontiers 🚧'})
 
 
 ////////////////////////////////////////////////
@@ -2896,7 +2893,7 @@ let frontiers = processManualLayers([hadriansWall, rhineRiver, danubeRiver], {de
 // these layers will be added to the map
 // you should change these variable names
 // to align with the variables you've defiend above
-let allLayers = [gryfMarkers, barMarkers, towns,  frontiers];
+let allLayers = [romeMarkers, barMarkers, towns,  frontiers];
 
 
 ///////////////////////////////////////

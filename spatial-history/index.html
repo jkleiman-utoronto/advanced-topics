@@ -46,18 +46,19 @@
     <body onload="initializePage();">
 
         <header id="page-header" class="nav">
-            <a class="navbar-brand pull-right" href="#">The Frontiers of the Roman Empire | by  Jonathan Kleiman</a> <!-- title should be descriptive -->
+            <a class="navbar-brand pull-right" href="#">The Frontiers of the Roman Empire |  Jonathan Kleiman</a> <!-- title should be descriptive -->
             <!-- menu content is set in ../js/static-parts.js and appended here -->
         </header>
 
         <main class="main-container">
             <!-- will be filled with markdown from intro.md -->
             <section id="intro"></section>
+            
             <!-- will house the map itself -->
             <section id="map_canvas"></section>
             <section id="legend">
                 <!-- this button will reset the map to its initial zoom and bounds  -->
-                <h1>Legend <button class="rounded" id="reset" onclick="resetMap(projectMap)">Reset Map</button>`
+                <h1> <button class="rounded" id="reset" onclick="resetMap(projectMap)" style = "margin-left: 160px;">Reset Map</button>
 </h1>
                 <!-- this will be auto-populated with info from your marker array -->
                 <div id="map_legend"></div>
