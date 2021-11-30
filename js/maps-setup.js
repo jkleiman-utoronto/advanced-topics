@@ -1525,7 +1525,7 @@ const townsData={
 
         {
           "type": "Feature",
-          "properties": {myColor: romeCol, title: "Roman Empire except for Britain c. 117 AD", description: "At its height the empire stretched from Lisbon to Kuwait"},
+          "properties": {myColor: romeCol, title: "Roman Empire except for Britain c. 117 AD", description: "At its height the empire stretched from Lisbon to Kuwait. This map depicts the empire at its greatest extent, during the end of Emperor Trajan's reign. Many of the territories shown under Roman control in this map were soon abandoned for more strategically defensible positions"},
           "geometry": {
             "type": "Polygon",
             "coordinates": [
