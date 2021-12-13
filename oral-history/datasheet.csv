@@ -1,0 +1,23 @@
+plugin,id,start,end,target,text,src,type,zoom,location,fly,title
+webpage,wikitest,0,5.5,,,https://www.youtube.com/embed/G8yU8wk67gY,,,,,
+figure,firstfigure,6,15,popcorn-container,"This caption describes the image (in this case, the Verrazzano-Narrows Bridge)
+",https://upload.wikimedia.org/wikipedia/commons/2/27/StatenIsland-13_%2836416067785%29.jpg,,,,,
+footnote,dumb2,62,1:10,popcorn-container,"<h3>this is a pretty useless plugin, to be honest.</h3>",,,,,,
+googlemap,quickmap,45,50,popcorn-container,,,HYBRID,14,"100 St. George St, Toronto, ON",,
+leaflet,leaflet0,15,35,popcorn-container,,,,14,"Verrazzano-Narrows Bridge, NY","{""endpoint"": ""Bronx, NY"", ""flightLength"": 12, ""wait"": 3}",
+markdown,markdownintro,6,15,,"## Markdown Event
+
+You may prefer to write your text in [markdown](https://markdown-it.github.io/); if so, use the  **markdown plugin** instead of the text plugin. This plugin is initialized with the same options as the markdown parser we use in our writing, so you can use the same features: _tables, class attributes, :rocket: emoji, etc._",,,,,,
+subtitle,,115,120,,"THis is really intended to be shown directly o na video -- so, not really for us.",,,,,,
+text,Intro,0.5,10,,"<h1>Text Plugin Event -- changed</h1><p>Here at the start of playback, you might wnat to introduce the topic. with some text.  The Text plugin allows you to add HTML directly. </p>",,,,,,
+text,biggerthan60,60,1:15,popcorn-container,"Look, we can also add times in human-friendly notation.  this is thanks to the getTimestampInSeconds function.",,,,,,
+timeline,sameID,120,165,,"This is interesting, though the use case is very specific",,,,,,First Timeline Event
+timeline,sameID,125,165,,"all timeline events with the same `id` property show up in the same container, making for some interesting persistence.",,,,,,Second Timeline Event
+timeline,sameID,130,165,,"You can add events to the top or bottom using the `direction` property column, which can be set to `up` or `down` (up by default, incorrect values are disregarded)
+",,,,,,"Third Timeline Event
+"
+webpage,,75,90,,,https://en.wikipedia.org/wiki/Verrazzano-Narrows_Bridge,,,,,
+wikipedia,wiki1,70,80,,,https://en.wikipedia.org/wiki/Verrazzano-Narrows_Bridge,,,,,
+wordriver,wordriver1,150,165,"
+",can be pretty when 2 have the same `id`,,,,,,
+wordriver,wordriver1,155,170,,word river -- this is really pretty silly,,,,,,

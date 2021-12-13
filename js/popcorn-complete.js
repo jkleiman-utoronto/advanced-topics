@@ -250,7 +250,7 @@
 
         //  Adding padding to the front and end of the arrays
         //  this is so we do not fall off either end
-        duration = self.mediADuration;
+        duration = self.media.duration;
 
         //  Check for no duration info (NaN)
         videoDurationPlus = duration != duration ? Number.MAX_VALUE : duration + 1;
@@ -261,8 +261,8 @@
         });
 
         if ( !self.isDestroyed ) {
-          self.datADurationChange = function() {
-            var newDuration = self.mediADuration,
+          self.data.durationChange = function() {
+            var newDuration = self.media.duration,
                 newDurationPlus = newDuration + 1,
                 byStart = self.data.trackEvents.byStart,
                 byEnd = self.data.trackEvents.byEnd;
@@ -301,7 +301,7 @@
           };
 
           // Listen for duration changes and adjust internal tracking of event timings
-          self.media.addEventListener( "durationchange", self.datADurationChange, false );
+          self.media.addEventListener( "durationchange", self.data.durationChange, false );
         }
 
         if ( self.options.frameAnimation ) {
@@ -508,11 +508,11 @@
 
     disable: function( instance, plugin ) {
 
-      if ( instance.datADisabled[ plugin ] ) {
+      if ( instance.data.disabled[ plugin ] ) {
         return;
       }
 
-      instance.datADisabled[ plugin ] = true;
+      instance.data.disabled[ plugin ] = true;
 
       if ( plugin in Popcorn.registryByName &&
            instance.data.running[ plugin ] ) {
@@ -535,11 +535,11 @@
     },
     enable: function( instance, plugin ) {
 
-      if ( !instance.datADisabled[ plugin ] ) {
+      if ( !instance.data.disabled[ plugin ] ) {
         return;
       }
 
-      instance.datADisabled[ plugin ] = false;
+      instance.data.disabled[ plugin ] = false;
 
       if ( plugin in Popcorn.registryByName &&
            instance.data.running[ plugin ] ) {
@@ -856,7 +856,7 @@
 
     // Toggle a plugin's playback behaviour (on or off) per instance
     toggle: function( plugin ) {
-      return Popcorn[ this.datADisabled[ plugin ] ? "enable" : "disable" ]( this, plugin );
+      return Popcorn[ this.data.disabled[ plugin ] ? "enable" : "disable" ]( this, plugin );
     },
 
     // Set default values for plugin options objects per instance
@@ -965,7 +965,7 @@
             evt = document.createEvent( eventInterface );
             evt.initEvent( type, true, true, global, 1 );
 
-            this.mediADispatchEvent( evt );
+            this.media.dispatchEvent( evt );
 
             return this;
           }
@@ -1142,7 +1142,7 @@
       track._running = true;
       instance.data.running[ track._natives.type ].push( track );
 
-      if ( !instance.datADisabled[ track._natives.type ] ) {
+      if ( !instance.data.disabled[ track._natives.type ] ) {
 
         track._natives.start.call( instance, null, track );
 
@@ -1170,7 +1170,7 @@
       track._running = false;
       runningPlugins.splice( runningPlugins.indexOf( track ), 1 );
 
-      if ( !instance.datADisabled[ track._natives.type ] ) {
+      if ( !instance.data.disabled[ track._natives.type ] ) {
 
         track._natives.end.call( instance, null, track );
 
@@ -1589,7 +1589,7 @@
             runningPlugins = obj.data.running[ type ];
             runningPlugins.splice( runningPlugins.indexOf( byEnd ), 1 );
 
-            if ( !obj.datADisabled[ type ] ) {
+            if ( !obj.data.disabled[ type ] ) {
 
               natives.end.call( obj, event, byEnd );
 
@@ -1626,7 +1626,7 @@
             byStart._running = true;
             obj.data.running[ type ].push( byStart );
 
-            if ( !obj.datADisabled[ type ] ) {
+            if ( !obj.data.disabled[ type ] ) {
 
               natives.start.call( obj, event, byStart );
 
@@ -1667,7 +1667,7 @@
             runningPlugins = obj.data.running[ type ];
             runningPlugins.splice( runningPlugins.indexOf( byStart ), 1 );
 
-            if ( !obj.datADisabled[ type ] ) {
+            if ( !obj.data.disabled[ type ] ) {
 
               natives.end.call( obj, event, byStart );
 
@@ -1705,7 +1705,7 @@
             byEnd._running = true;
             obj.data.running[ type ].push( byEnd );
 
-            if ( !obj.datADisabled[ type ] ) {
+            if ( !obj.data.disabled[ type ] ) {
 
               natives.start.call( obj, event, byEnd );
 
@@ -5728,7 +5728,7 @@
           player.play();
           break;
         case "loadProgress":
-          var duration = parseFloat( datADatADuration );
+          var duration = parseFloat( data.data.duration );
           if( duration > 0 && !playerReady ) {
             playerReady = true;
             player.pause();
@@ -5777,10 +5777,10 @@
       switch ( data.event ) {
         case "loadProgress":
           self.dispatchEvent( "progress" );
-          updateDuration( parseFloat( datADatADuration ) );
+          updateDuration( parseFloat( data.data.duration ) );
           break;
         case "playProgress":
-          onCurrentTime( parseFloat( datAData.seconds ) );
+          onCurrentTime( parseFloat( data.data.seconds ) );
           break;
         case "play":
           onPlay();
@@ -5792,7 +5792,7 @@
           onEnded();
           break;
         case "seek":
-          onCurrentTime( parseFloat( datAData.seconds ) );
+          onCurrentTime( parseFloat( data.data.seconds ) );
           onSeeked();
           break;
       }
@@ -10744,7 +10744,7 @@ Paragraph with **bold** _ital_ and :rocket: emoji`
     }
 
     if ( node ) {
-      returnDatAData = parseChildren( node, 0 );
+      returnData.data = parseChildren( node, 0 );
     }
 
     return returnData;
@@ -10924,7 +10924,7 @@ Paragraph with **bold** _ital_ and :rocket: emoji`
       node = node.previousSibling;
     }
     
-    returnDatAData = cmds.reverse();
+    returnData.data = cmds.reverse();
 
     return returnData;
   });
@@ -11163,7 +11163,7 @@ Paragraph with **bold** _ital_ and :rocket: emoji`
       if ( childNodes.length < 1 || ( childNodes.length === 1 && childNodes[0].nodeType === 3 ) ) {
 
         if ( !manifest ) {
-          returnDatAData.push( createTrack( node.nodeName, attributes ) );
+          returnData.data.push( createTrack( node.nodeName, attributes ) );
         } else {
           manifestData[attributes.id] = attributes;
         }
@@ -11182,7 +11182,7 @@ Paragraph with **bold** _ital_ and :rocket: emoji`
     };
 
     // this is where things actually start
-    var x = datADocumentElement.childNodes;
+    var x = data.documentElement.childNodes;
 
     for ( var i = 0, xl = x.length; i < xl; i++ ) {
 

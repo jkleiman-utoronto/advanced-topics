@@ -25,6 +25,14 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
+figure img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+}
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
@@ -168,6 +176,7 @@ fieldset {
 }
 iframe {
   border: 0;
+  height: 500px;
 }
 .container {
     max-width: var(--grid-maxWidth);

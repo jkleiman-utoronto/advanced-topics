@@ -13,7 +13,7 @@ let menuEntries = [
 ];
 
 
-let authorName='Jonathan Kleiman',
+let authorName='YOUR NAME HERE',
     footerHtml=`HTML projects by ${authorName}, originally written for <a href="https://digitalhistory.github.io/dh-website/">HIS393: Digital History</a>`;
 
 

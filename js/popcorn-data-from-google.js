@@ -27,7 +27,7 @@ var loadPopcorn = function(){
     // It's very important, though, to keep the same column headers as in our example spreadsheet:
     // https://docs.google.com/spreadsheets/d/1pL_Lj62_ZcW7iawTCQ_5BQsmdynCtC8y5BCNy3k2LOM/
   //  let public_spreadsheet_key = 'https://docs.google.com/spreadsheets/d/1pL_Lj62_ZcW7iawTCQ_5BQsmdynCtC8y5BCNy3k2LOM/pub?output.csv';
-  let public_spreadsheet_key = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT261AShHKCE64_vEX653Tg3Z4Hone24k1qK89Fn58VapGoDMMvwmVuYY5_VHZUwihL7gWvhBh0QTJS/pub?output=csv'
+  let public_spreadsheet_key = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRdc9xFHLzPZ5xPUIcUX-LFjv4JEKn3cgzl9CjL31Ae7WF5N7FRH0UwOf7zO0B4ZZiMSTYWzrqdBNrG/pub?output=csv'
 
     // now we are going to use the tabletop.js library, which was called in our 
     // HTML file, to grab the date from the spreadsheet and process it so that 
@@ -35,7 +35,7 @@ var loadPopcorn = function(){
   let mytables = Papa.parse( public_spreadsheet_key,
                              { download: true,
                                header: true,
-                               complete: processInfo)};
+                               complete: processInfo});
 
     // if you're having problems with this, you can uncomment the next line and 
     // look in the browser's console to see if the data looks like it's supposed to.
