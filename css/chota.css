@@ -163,6 +163,11 @@ blockquote p::after {
     content: '\201D';
 }
 
+img.mechPic {
+    height: 40%;
+    width: 40%;
+}
+
 
 
 code,

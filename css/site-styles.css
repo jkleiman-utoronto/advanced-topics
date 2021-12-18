@@ -59,6 +59,11 @@ footer#page-footer {
     justify-content: center;
 }
 
+img.mechPic {
+    height: 40%;
+    width: 40%;
+}
+
 
 /* since this is a simple site, use of variables here is a little overkill. */
 /* However, it may still be in your interest to use them.  */
