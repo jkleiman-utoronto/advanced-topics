@@ -163,9 +163,9 @@ blockquote p::after {
     content: '\201D';
 }
 
-img.mechPic {
-    height: 40%;
-    width: 40%;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 

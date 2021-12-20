@@ -59,10 +59,11 @@ footer#page-footer {
     justify-content: center;
 }
 
-img.mechPic {
-    height: 40%;
-    width: 40%;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
+
 
 
 /* since this is a simple site, use of variables here is a little overkill. */
